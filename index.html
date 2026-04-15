@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Gaël BOYA - Ingénieur Conception Numérique & Systèmes Embarqués</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" href="favicon.ico">
+		<meta name="theme-color" content="#1b1f22">
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+	</head>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// Sélectionne tous les sliders de la page
+			const sliders = document.querySelectorAll('.project-slider');
+
+			sliders.forEach(slider => {
+				const slides = slider.querySelectorAll('.slide');
+				const btnPrev = slider.querySelector('.btn-prev');
+				const btnNext = slider.querySelector('.btn-next');
+				const counter = slider.querySelector('.slide-counter');
+				let currentIndex = 0;
+
+				// Fonction pour mettre à jour l'affichage
+				function updateSlider() {
+					// Cacher tous les slides
+					slides.forEach(slide => slide.classList.remove('active'));
+					// Afficher le slide actuel
+					slides[currentIndex].classList.add('active');
+					// Mettre à jour le compteur (ex: 1 / 3)
+					counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+				}
+
+				// Événement clic bouton Suivant (>)
+				btnNext.addEventListener('click', () => {
+					currentIndex = (currentIndex + 1) % slides.length; // Retourne à 0 si on dépasse la fin
+					updateSlider();
+				});
+
+				// Événement clic bouton Précédent (<)
+				btnPrev.addEventListener('click', () => {
+					currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Va à la fin si on recule depuis 0
+					updateSlider();
+				});
+
+				// Initialiser l'affichage au chargement
+				updateSlider();
+			});
+		});
+	</script>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon solid fa-microchip"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Gaël BOYA</h1>
+								<p>Ingénieur Double Compétence <br /> 
+								Conception Numérique (RTL/FPGA) & Systèmes Embarqués (C/RTOS)</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#hardware">Hardware</a></li>
+								<li><a href="#software">Software</a></li>
+								<li><a href="#about">A Propos</a></li>
+								<li><a href="#freelance">Freelance</a></li>
+								<li><a href="#cv">CV</a></li>
+								<li><a href="#contact">Contact</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Hardware -->
+							<article id="hardware">
+								<h2 class="major">Conception Numérique</h2>
+								<span class="image main"><img src="images/hardware_bg1.jpg" alt="Hardware Design" /></span>
+								<p><b>Spécialisation :</b> RTL Design, FPGA, Architecture RISC-V, Vérification.</p>
+    
+								<h3>Projets Majeurs</h3>
+								<div class="project-slider" id="slider-hardware">
+									<div class="slides-container">
+
+										<div class="slide active">
+											<img src="images/projects/minisoc.png" alt="Architecture RISC-V RV32I" class="project-img" />
+
+											<h4>1. MiniSoC RISC-V (RV32I)</h4>
+											<p class="texte-justifie">Conception from scratch d'un CPU synthétisable en Verilog, implémentation d'un bus Wishbone, et simulation complète.</p>
+
+											<ul class="actions small" style="margin-top: 15px;">
+												<li><a href="https://github.com/Adebayo17/MiniSoC_RV32I.git" class="button small icon brands fa-github" target="_blank">Code source</a></li>
+											</ul>
+										</div>
+
+										<div class="slide">
+											<img src="images/projects/axi_dma_accelerator.png" alt="AXI DMA Accelerator" class="project-img" />
+
+											<h4>2. AXI DMA Accelerator</h4>
+											<p class="texte-justifie">Développement d'un moteur DMA pour le streaming de données haut débit sur FPGA en utilisant le standard AXI4-Stream.</p>
+
+											<ul class="actions small" style="margin-top: 15px;">
+												<li><a href="https://github.com/Adebayo17/fpga_axi_dma_accelerator.git" class="button small icon brands fa-github" target="_blank">Code source</a></li>
+											</ul>
+										</div>
+
+										<div class="slide">
+											<img src="images/projects/uart_controller.png" alt="UART Controller" class="project-img" />
+
+											<h4>3. UART Controller</h4>
+											<p class="texte-justifie">Implémentation RTL complète avec générateur de baud rate paramétrable et buffer FIFO pour des communications fiables.</p>
+
+											<ul class="actions small" style="margin-top: 15px;">
+												<li><a href="https://github.com/Adebayo17/fpga_uart_controller.git" class="button small icon brands fa-github" target="_blank">Code source</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="slider-controls">
+										<button class="btn-prev icon solid fa-chevron-left"></button>
+										<span class="slide-counter">1 / 3</span>
+										<button class="btn-next icon solid fa-chevron-right"></button>
+									</div>
+								</div>
+								
+								<h3>Compétences Techniques</h3>
+								<p>
+									<span class="tech-tag">Verilog</span> <span class="tech-tag">VHDL</span> <span class="tech-tag">SystemVerilog</span>
+									<span class="tech-tag">Vivado</span> <span class="tech-tag">Quartus</span> <span class="tech-tag">ModelSim</span>
+									<span class="tech-tag">RISC-V</span> <span class="tech-tag">Wishbone</span> <span class="tech-tag">AXI4</span>
+								</p>
+							</article>
+
+						<!-- Software -->
+							<article id="software">
+								<h2 class="major">Systèmes Embarqués</h2>
+								<span class="image main"><img src="images/software_bg1.jpg" alt="Embedded Systems" /></span>
+								<p><b>Spécialisation :</b> Bare-metal, FreeRTOS, Développement de drivers, IoT.</p>
+								
+								<h3>Projets Majeurs</h3>
+								<div class="project-slider" id="slider-software">
+									<div class="slides-container">
+
+										<div class="slide active">
+											<img src="images/projects/esp32_iot_camera.png" alt="Smart IoT Surveillance Node" class="project-img" />
+
+											<h4>1. Smart IoT Surveillance Node (FreeRTOS)</h4>
+											<p class="texte-justifie">Architecture multi-tâches sur ESP32-S3. Gestion simultanée de la capture vidéo, compression et transmission WiFi.</p>
+
+											<ul class="actions small" style="margin-top: 15px;">
+												<li><a href="https://github.com/Adebayo17/esp32_smart_iot_camera_node.git" class="button small icon brands fa-github" target="_blank">Code source</a></li>
+											</ul>
+										</div>
+
+										<div class="slide">
+											<img src="images/projects/stm32_display_driver.png" alt="STM32 Bare-Metal Display Driver" class="project-img" />
+
+											<h4>2. STM32 Bare-Metal Display Driver</h4>
+											<p class="texte-justifie">Écriture complète d'un driver SPI pour écran OLED sans utiliser la librairie HAL graphique, avec gestion de Frame Buffer.</p>
+
+											<ul class="actions small" style="margin-top: 15px;">
+												<li><a href="https://github.com/Adebayo17/stm32_bare_metal_oled_display_driver.git" class="button small icon brands fa-github" target="_blank">Code source</a></li>
+											</ul>
+										</div>
+
+										<div class="slide">
+											<h4>3. Contrôle Temps Réel (NXP Cup)</h4>
+											<p class="texte-justifie">Implémentation de boucles d'asservissement sous contraintes de temps réel strictes (FreeRTOS) pour un véhicule autonome.</p>
+										</div>
+									</div>
+									<div class="slider-controls">
+										<button class="btn-prev icon solid fa-chevron-left"></button>
+										<span class="slide-counter">1 / 3</span>
+										<button class="btn-next icon solid fa-chevron-right"></button>
+									</div>
+								</div>
+								
+								<h3>Stack Technique</h3>
+								<p>
+									<span class="tech-tag">C</span> <span class="tech-tag">C++</span> <span class="tech-tag">Python</span>
+									<span class="tech-tag">FreeRTOS</span> <span class="tech-tag">ARM Cortex-M</span> <span class="tech-tag">ESP32</span>
+									<span class="tech-tag">SPI/I2C/UART</span> <span class="tech-tag">MQTT</span>
+								</p>
+							</article>
+
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">À Propos</h2>
+								<span class="image main"><img src="images/id_photo.jpg" alt="" /></span>
+								<p class="texte-justifie">Ingénieur double-diplômé <b>Grenoble-INP Phelma</b> & <b>INPT</b>, je suis passionné par la conception de systèmes électroniques complexes, du rtl jusqu'au firmware.</p>
+								<p class="texte-justifie">Mon parcours m'a permis d'acquérir une double compétence rare : la rigueur de la conception matérielle (RTL) et l'agilité du développement logiciel bas niveau (C/RTOS).</p>
+								<p class="texte-justifie">Mon objectif : Contribuer à des projets innovants dans les domaines de l'IoT, de l'automobile ou de l'aérospatiale, où l'optimisation hardware/software est cruciale.</p>
+
+								<h3>Expérience Professionnelle</h3>
+								<ul>
+									<li><b>Silicon Mobility (2024) :</b> Stage Ingénieur Intégration SoC (RTL Design, Simulation).</li>
+									<li><b>INPT (2023) :</b> Stage Recherche en Sécurité Matérielle (Attaques Side-Channel).</li>
+								</ul>
+
+								<ul class="actions" style="margin-top: 2rem; justify-content: center;">
+									<li><a href="#cv" class="button primary">Découvrir mes CV</a></li>
+									<li><a href="#contact" class="button">Me Contacter</a></li>
+								</ul>
+							</article>
+
+						<!-- Freelance -->
+							<article id="freelance">
+								<h2 class="major">Consulting & Formation</h2>
+
+								<p class="texte-justifie"><i>Ingénieur consultant indépendant, j'interviens auprès d'écoles et d'entreprises pour du conseil technique, de la formation, ou du développement sur mesure en systèmes embarqués et électronique numérique.</i></p>
+								
+								<div class="project-slider" id="slider-freelance">
+									<div class="slides-container">
+										
+										<div class="slide active">
+											<div class="mission" style="margin-bottom: 0;"> 
+												<div class="mission-header">
+													<span class="mission-date">Mars 2026</span>
+													<h3>Formateur en Systèmes Embarqués & IoT</h3>
+													<span class="mission-client">SUPINFO (Lyon)</span>
+												</div>
+
+												<img src="images/freelance/supinfo_training.png" alt="Formation Embarqué SUPINFO" class="project-img" />
+												
+												<p><b>Mission :</b> Animation d'un module intensif de <b>5 jours (35h)</b> sur les systèmes embarqués.</p>
+												<p class="texte-justifie"><b>Contexte :</b> L'école souhaitait former ses étudiants de cycle ingénieur aux fondamentaux pratiques de l'embarqué, de l'électronique à la communication IoT, en privilégiant une approche "learning by doing".</p>
+												
+												<p><b>Actions menées :</b></p>
+												<ul>
+													<li class="texte-justifie"><b>Conception pédagogique :</b> Déploiement du programme complet (8 modules) et rédaction des scripts de déroulement.</li>
+													<li class="texte-justifie"><b>Animation :</b> Cours magistraux sur l'architecture des microcontrôleurs (Arduino), protocoles (UART, I²C), et l'électronique de base.</li>
+													<li class="texte-justifie"><b>Encadrement technique :</b> Supervision des TP sur simulateur (Tinkercad) et en hardware réel (débogage).</li>
+												</ul>
+												
+												<p class="mission-tech">
+													<span class="tech-tag">Arduino</span> <span class="tech-tag">C/C++</span> 
+													<span class="tech-tag">UART/I²C</span> <span class="tech-tag">Tinkercad</span>
+												</p>
+											</div>
+										</div>
+
+										<!--Exemple mission to fill -->
+										<!-- 
+										<div class="slide">
+											<div class="mission" style="margin-bottom: 0;">
+												<div class="mission-header">
+													<span class="mission-date">Juin 2025</span>
+													<h3>Consultant RTL Design & Vérification</h3>
+													<span class="mission-client">Client Confidentiel</span>
+												</div>
+												
+												<p><b>Mission :</b> Accompagnement sur l'architecture d'un accélérateur matériel.</p>
+												<p class="texte-justifie"><b>Contexte :</b> Développement d'une preuve de concept (PoC) pour un système de traitement de signal temps réel sur FPGA...</p>
+												
+												<p><b>Actions menées :</b></p>
+												<ul>
+													<li>Analyse des spécifications et rédaction de l'architecture.</li>
+													<li>Implémentation des blocs IP en SystemVerilog.</li>
+												</ul>
+												
+												<p class="mission-tech">
+													<span class="tech-tag">SystemVerilog</span> <span class="tech-tag">ModelSim</span>
+												</p>
+											</div>
+										</div> -->
+
+									</div>
+									
+									<div class="slider-controls">
+										<button class="btn-prev icon solid fa-chevron-left"></button>
+										<span class="slide-counter">1 / 2</span>
+										<button class="btn-next icon solid fa-chevron-right"></button>
+									</div>
+								</div>
+								<p style="margin-top: 30px; text-align: center;">
+									<i>Vous avez un besoin en formation ou en consulting technique ?</i><br>
+									<a href="#contact" class="button primary scrolly" style="margin-top: 15px;">Me Contacter</a>
+								</p>
+							</article>
+							
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="https://formspree.io/f/mkokorpk">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+								<ul class="icons">
+									<li><a href="https://linkedin.com/in/adebayo17" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/Adebayo17" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</article>
+						
+						<!-- CV -->
+							<article id="cv">
+								<h2 class="major">Curriculum Vitae</h2>							
+								<div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0; flex-wrap: wrap;">
+									<!-- CV Électronique Numérique (FR) -->
+									<div style="text-align: center;">
+										<a href="docs/CV_Electronique_Numerique_FR.pdf" class="button primary icon solid fa-download" download style="width: 220px;">
+											CV Numérique (FR)
+										</a>
+										<p style="margin-top: 10px; font-size: 0.8rem;">
+											<a href="docs/CV_Electronique_Numerique_EN.pdf" download>🇬🇧 English version</a>
+										</p>
+									</div>
+									
+									<!-- CV Systèmes Embarqués (FR) -->
+									<div style="text-align: center;">
+										<a href="docs/CV_System_Embarque_FR.pdf" class="button icon solid fa-download" download style="width: 220px;">
+											CV Embarqué (FR)
+										</a>
+										<p style="margin-top: 10px; font-size: 0.8rem;">
+											<a href="docs/CV_System_Embarque_EN.pdf" download>🇬🇧 English version</a>
+										</p>
+									</div>
+									
+								</div>
+								
+								<hr />
+								
+								<h3>📋 Que contiennent ces CV ?</h3>
+								<ul>
+									<li><b>CV Électronique Numérique :</b> Focus RTL, FPGA, VHDL/Verilog, Architecture RISC-V, SoC.</li>
+									<li><b>CV Systèmes Embarqués :</b> Focus C, FreeRTOS, Bare-metal, IoT, Développement drivers.</li>
+								</ul>
+								
+								<p style="margin-top: 20px; font-style: italic; opacity: 0.8;">
+									📌 Tous les CV sont au format PDF. Dernière mise à jour : Février 2026.
+								</p>
+							</article>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Gaël BOYA. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
