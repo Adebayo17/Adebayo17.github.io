@@ -1873,3 +1873,8 @@ h1, h2, h3, h4, h5, h6, .major {
     }
 }
 
+
+/* --- Interdire le passage à la ligne dans le menu principal --- */
+#header nav ul li a {
+    white-space: nowrap !important;
+}
